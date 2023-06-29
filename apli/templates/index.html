@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUY NOW</title>
+</head>
+<body>
+    <h5>Usuarios Existentes:</h5>
+      <ul>
+         {% for XD in lista %}
+                <li>{{ XD.name }} {{XD.last_name}}</li>
+         {% endfor %}
+      </ul>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Ingrese nuevo cliente</legend>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre">
+            
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" id="apellido">
+
+            <label>Seleccione el size de su cereal</label>
+            <select name="tamaño" id="tamaño">
+                <option value="s">Small</option>
+                <option value="M">Medium</option>
+                <option value="L">Large</option>
+                <option value="J">Jumbo</option>
+            </select>
+
+            <button type="submit">Guardar</button>
+        </fieldset>
+    </form>
+</body>
+</html>
