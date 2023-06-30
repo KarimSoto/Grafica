@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+
+{% block onichan %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,15 +20,10 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const data = {
-                labels: [
-                    'Small',
-                    'Medium',
-                    'Large',
-                    'Jumbo'
-                ],
+                labels: {{labels|safe}},
                 datasets: [{
                     label: 'My First Dataset',
-                    data: [1, 2, 3, 4], // Aquí deben ir las cantidades de usuarios que seleccionaron cada opción
+                    data: {{data|safe}},
                     backgroundColor: [
                         'rgb(255, 99, 132)',
                         'rgb(54, 162, 235)',
@@ -54,3 +53,4 @@
     
 </body>
 </html>
+{% endblock %}

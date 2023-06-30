@@ -21,4 +21,16 @@ def VistaPrincipal(request):
 
 
 def VistaResultados(request):
-    return render(request, 'Grafica.html')
+    labels = []
+    data = []
+    queryset = cliente.objects.order_by('id')
+
+    count_small = queryset.filter(cereal='S').count()
+    count_medium = queryset.filter(cereal='M').count()
+    count_large = queryset.filter(cereal='L').count()
+    count_jumbo = queryset.filter(cereal='J').count()
+
+    labels = ['Small', 'Medium', 'Large', 'Jumbo']
+    data = [count_small, count_medium, count_large, count_jumbo]
+
+    return render(request, 'Grafica.html', {'labels': labels, 'data': data})
