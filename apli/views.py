@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import generic
+from django.views.generic import TemplateView
 from .models import cliente
 # Create your views here.
 
@@ -34,3 +35,26 @@ def VistaResultados(request):
     data = [count_small, count_medium, count_large, count_jumbo]
 
     return render(request, 'Grafica.html', {'labels': labels, 'data': data})
+
+
+
+def prueba(request):
+  palabra=89
+  return HttpResponse("hola"+palabra)
+
+
+class Error404(TemplateView):
+   template_name="Error_404.html"
+
+
+class Error500(TemplateView):
+   template_name="Error_500.html"
+
+   @classmethod
+   def as_error_view(cls):
+      v=cls.as_view()
+      def view(request):
+         r=v(request)
+         r.render()
+         return r
+      return view
