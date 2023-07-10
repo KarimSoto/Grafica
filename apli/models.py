@@ -1,5 +1,6 @@
 from django.db import models
-
+import datetime
+from django.utils import timezone
 # Create your models here.
 
 
@@ -19,3 +20,4 @@ class cliente(models.Model):
     def __str__(self):
         return  str(self.id) + "-" +  self.name
     
+

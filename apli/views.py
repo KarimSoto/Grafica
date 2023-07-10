@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import generic
-from django.views.generic import TemplateView
+from django.views.generic import *
 from .models import cliente
 # Create your views here.
 
@@ -58,3 +58,9 @@ class Error500(TemplateView):
          r.render()
          return r
       return view
+
+
+class ListaClientes(ListView):
+    model=cliente
+    context_object_name ='clientes'
+    template_name="listaClientes.html"
